@@ -8,4 +8,4 @@ void pascalTriangle(int n) {
         cout << endl;
     }
 }
-// table make i = n, j = r, => ncr = table[i][j]
+// table make i = n, j = r,  => ncr = table[i][j]
