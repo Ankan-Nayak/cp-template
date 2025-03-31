@@ -2,32 +2,28 @@
 using namespace std;
 
 const int N = 1e5+10;
-
 vector<int> g[N];
-int par[N];
 
-void dfs(int vertex, int p = -1) {
-    par[vertex] = p;
+vector<int> subtree_sum(N), val(N);
+
+void dfs(int vertex, int par = -1) {
+    subtree_sum[vertex] += val[vertex];
     for (auto child : g[vertex]) {
-        if (child == p) continue;
+        if (child == par) continue;
         dfs(child, vertex); 
+        subtree_sum[vertex] += subtree_sum[child];
     }
-}
-
-vector<int> path(int v) {
-    vector<int> ans;
-    while (v != -1) {
-        ans.push_back(v);
-        v = par[v];
-    }
-    reverse (ans.begin(), ans.end());
-    return ans;
 }
 
 
 signed main() {
     int n;
     cin >> n;
+
+    for (int i = 0; i <= n; i++) {
+        g[i].clear();
+    }
+
     for (int i = 0; i < n - 1; ++i) {
         int x, y;
         cin >> x >> y;
@@ -37,21 +33,12 @@ signed main() {
     // root node 1 here
     dfs(1);
 
-    int x, y;
-    cin >> x >> y;
-    vector<int> path_x = path(x);
-    vector<int> path_y = path(y);
-    int mn_ln = min(path_x.size(), path_y.size());
-
-    int lca = -1;
-    for (int i = 0; i < mn_ln; ++i) {
-        if (path_x[i] == path_y[i]) {
-            lca = path_x[i];
-
-        }
-        else {
-            break;
-        }
+    long long ans = 0;
+    for (int i = 2; i <= n; ++i) {
+        int part1 = subtree_sum[i];
+        int part2 = subtree_sum[1] - subtree_sum[i];
+        ans = max(ans, (part1 * 1LL * part2));
     }
-    cout << lca << '\n';
+
+    cout << ans << '\n';
 }
