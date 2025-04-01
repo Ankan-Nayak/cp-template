@@ -46,7 +46,7 @@ void dfs(int vertex, int par = 0) {
 
 
 void reset() {
-    for (int i = 0; i < N; ++i) {
+    for (int i = 0; i <= n; ++i) { // don't use N here, for every test case N (t*N might TLE)
         depth[i] = 0, height[i] = 0;
     }
 }
