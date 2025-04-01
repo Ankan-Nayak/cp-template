@@ -44,7 +44,7 @@ signed main() {
     }
 
     int connected_ct = 0;
-    for (int i = 1; i <= n; ++i) {
+    for (int i = 1; i <= n; ++i) {  // if we start from 0, make[0] = 0, by default
         if (find(i) == i) connected_ct += 1;
     }
     cout << connected_ct;
