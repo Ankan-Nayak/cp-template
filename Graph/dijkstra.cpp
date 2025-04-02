@@ -42,7 +42,8 @@ signed main() {
     for (int i = 0; i < m; ++i) {
         int x, y, wt;
         cin >> x >> y >> wt;
-        g[x].push_back({y, wt});
+        g[x].push_back({y, wt}); // directed graph
+        // g[y].push_back({x, wt});  if it's undirected graph
     }
 
     int source, destination;
