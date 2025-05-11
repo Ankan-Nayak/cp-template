@@ -8,3 +8,8 @@ void dfs(int vertex, int par = -1) {
         dfs(child, vertex);
     }
 }
+
+// unordered_map<int, unordered_map<int, int>> mp;
+// mp[1e9][1e9] = 1e9
+// for adjancy matrix
+// inf size 2d matrix
