@@ -1,9 +1,0 @@
-question
- - A graph given, some sources given, min distance to reach the the destination node first
-
-solution
- - just put all source in queue 
- - run normal bfs
- - at a time there's 2 level possible in queue
- - whatever node reach destination first, the level will be min
- 
