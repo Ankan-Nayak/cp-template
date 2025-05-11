@@ -6,6 +6,17 @@ vector<int> g[N];
 
 int vis[N];
 int level[N];
+vector<int> parent(N, -1);
+
+vector<int> get_path(int target) {
+    vector<int> path;
+    for (int v = target; v != -1; v = parent[v]) {
+        path.push_back(v);
+    }
+    reverse(path.begin(), path.end());
+    return path;
+}
+
 
 void bfs(int source) {
     queue<int> q;
@@ -20,6 +31,7 @@ void bfs(int source) {
                 q.push(child);
                 vis[child] = 1;
                 level[child] = level[curr_v] + 1;
+                parent[child] = curr_v;
             }
         }
     }
