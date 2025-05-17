@@ -13,6 +13,9 @@ using namespace __gnu_pbds;
 // #define ordered_set tree<ll, null_type,less_equal<ll>, rb_tree_tag,tree_order_statistics_node_update> 
 // #define ordered_multiset tree<ll, null_type, less_equal<ll>, rb_tree_tag, tree_order_statistics_node_update>  /*ordered_multiset o_set*/
 
+// typedef tree<string, null_type, less<string>, rb_tree_tag, tree_order_statistics_node_update> ordered_set_string;
+// for inserting string rather than int
+
 // #define ll long long
 // for ordered multiset , notice less_equal
 
