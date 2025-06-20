@@ -31,3 +31,10 @@ long long binpow(long long a, long long b, long long m) {
 long long modulo_div(long long a, long long b, long long m) {
     return mod_mul(a, binpow(b, m - 2, m), m);
 }
+
+
+// Super_Pow: a^(b^c) mod MOD
+long long Super_Pow(long long a, long long b, long long c, long long MOD) {
+    long long exponent = binpow(b, c, MOD - 1); // Use Euler or Fermat for prime MOD
+    return binpow(a, exponent, MOD);
+}
