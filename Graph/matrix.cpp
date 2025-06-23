@@ -78,28 +78,27 @@ int dy[4] = {0, 0, -1, 1};
 int n, m, q;
 
 void bfs(vector<vector<int>> &grid, int x, int y, int &white_cell) {
-    queue<pair<int, int>> q;
-    q.push({x, y});
-    
-    // Mark starting cell as black and decrease white count
+    queue<pair<int, int>> que;  // Changed variable name to avoid conflict
+    que.push({x, y});
+
     grid[x][y] = 0;
     white_cell--;
     
-    while (!q.empty()) {
-        auto [cx, cy] = q.front();
-        q.pop();
+    while (!que.empty()) {
+        pair<int, int> curr = que.front();
+        que.pop();
         
-        // Explore all 4 neighbors
+        int cx = curr.first;
+        int cy = curr.second;
+        
         for (int d = 0; d < 4; d++) {
             int nx = cx + dx[d];
             int ny = cy + dy[d];
-            
-            // Check bounds and if it's a white cell
+
             if (nx >= 0 && ny >= 0 && nx < n && ny < m && grid[nx][ny] == 1) {
-                // Mark as black and add to queue
                 grid[nx][ny] = 0;
                 white_cell--;
-                q.push({nx, ny});
+                que.push({nx, ny});
             }
         }
     }
@@ -120,12 +119,12 @@ signed main() {
         }
     }
     
-    while (q--) {
+    int queries = q;  // Store the number of queries in a separate variable
+    while (queries--) {
         int x, y;
         cin >> x >> y;
-        x--; y--;  // Convert to 0-based indexing
-        
-        // Check if click is valid and on a white cell
+        x--; y--;  
+    
         if (x < 0 || x >= n || y < 0 || y >= m || grid[x][y] == 0) {
             cout << white_cell << '\n';
         } else {
