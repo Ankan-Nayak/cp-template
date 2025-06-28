@@ -19,7 +19,7 @@ int inverse(int x) {    // O(log(mod))
 
 int fact[1000100];
 int invfact[1000100];
-int precompute_for_faster() {    // O(n) + O(log(mod)) + O(n) ~ O(n + log(mod))
+void precompute_for_faster() {    // O(n) + O(log(mod)) + O(n) ~ O(n + log(mod))
 	fact[0] = 1;
 	for(int i=0; i<=1000000; i++) {
 		fact[i] = (fact[i-1] * i) % mod;
