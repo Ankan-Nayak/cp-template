@@ -1,4 +1,4 @@
-// iterative dp with mod
+// iterative dp with mod , 0(N)
 #include <iostream>
 using namespace std;
 
@@ -21,7 +21,7 @@ int main() {
 }
 
 
-// recursive
+// recursive 2^N , use recursive dp
 #include <iostream>
 using namespace std;
 
