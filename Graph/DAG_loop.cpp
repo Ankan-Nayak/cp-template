@@ -24,6 +24,7 @@ using namespace std;
 vector<vector<int>> g;
 vector<int> col;
 vector<int> parent;
+vector<int> depth;
 
 bool is_cycle = 0;
 vector<int> any_cycle;
@@ -35,6 +36,7 @@ void dfs(int node, int par) {
     for (auto v : g[node]) {
         // if (v == par) continue;  for undirected graph
         if (col[v] == 1) {
+            depth[v] = depth[node] + 1;
             // node -> v is a forward edge
             dfs(v, node);
         } else if (col[v] == 2) {
@@ -43,6 +45,11 @@ void dfs(int node, int par) {
             if (is_cycle == 0) {
                 int temp = node;
                 while (temp != v) {
+                    // int cycle_length = depth[node] - depth[v] + 1;
+                    // if (cycle_length % 2 == 1) {
+                    //     is_cycle = 1;
+                    //     return;
+                    // }
                     any_cycle.push_back(temp);
                     temp = parent[temp];
                 }
@@ -66,6 +73,7 @@ int main() {
     g.resize(n + 1);
     col.assign(n + 1, 1);      // all nodes initially unvisited
     parent.assign(n + 1, -1);  // initialize parent as -1
+    depth.resize(n + 1);
 
 
     map<pair<int, int>, int> edgecnt;
