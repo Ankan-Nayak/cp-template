@@ -33,6 +33,7 @@ void dfs(int node, int par) {
     col[node] = 2;
 
     for (auto v : g[node]) {
+        // if (v == par) continue;  for undirected graph
         if (col[v] == 1) {
             // node -> v is a forward edge
             dfs(v, node);
@@ -66,10 +67,25 @@ int main() {
     col.assign(n + 1, 1);      // all nodes initially unvisited
     parent.assign(n + 1, -1);  // initialize parent as -1
 
+
+    map<pair<int, int>, int> edgecnt;
     for (int i = 0; i < m; ++i) {
         int u, v;
         cin >> u >> v;
-        g[u].push_back(v); // Directed graph
+
+        // if (u > v) swap(u, v);
+        // edgecnt[{u, v}]++;
+        // if (edgecnt[{u, v}] > 1) {
+        //     // multiple edge cycle
+        // } else {
+
+        
+            // if (u == v) {
+            //     // self loop
+            // }
+            g[u].push_back(v); // Directed graph
+            // g[v].push_back(u);
+        // }
     }
 
     for (int i = 1; i <= n; ++i) {
