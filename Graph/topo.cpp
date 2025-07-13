@@ -19,6 +19,17 @@ void dfs_topo(int node)
     topo.push_back(node);
 }
 
+int dp[100000]; // longest path starting at node
+int rec(int node) {
+    if (dp[node] != -1) return dp[node];
+    int ans = 1;
+    for (auto child : g[node]) {
+        ans = max(ans, 1 + rec(child));
+    }
+    return dp[node] = ans;
+}
+
+
 int main()
 {
     cin >> n >> m;
@@ -45,4 +56,27 @@ int main()
     {
         cout << topo[i] << " ";
     }
+
+
+    // recursive
+    memset(dp, -1, sizeof(dp));
+    int ans = 0;
+    for (int i = 1; i <= n; ++i) {
+        ans = max(ans, rec(i));
+    }
+    cout << ans << '\n';
+
+
+    // iterative
+    for (auto node : topo) {
+        for (auto child : g[node]) {
+            dp[child] = max(dp[child], 1 + dp[node]);
+        }
+    }
+
+    int ans = 0;
+    for (int i = 1; i <= n; ++i) {
+        ans = max(ans, dp[i]);
+    }
+    // node count, edge count = ans - 1
 }
