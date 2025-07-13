@@ -4,6 +4,8 @@ using namespace std;
 vector<vector<int>> g;
 vector<int> indegree;
 
+
+// lexicographically smallest topological order
 void kahnTopologicalSort(int vertices) {
     queue<int> q;
 
