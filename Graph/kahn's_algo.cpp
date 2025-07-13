@@ -6,6 +6,18 @@ vector<int> indegree;
 
 
 // lexicographically smallest topological order
+    // priority_queue<int> q; ......basicall min pq all along
+
+    // for (int i = 0; i < vertices; ++i) {
+    //     if (indegree[i] == 0) {
+    //         q.push(-i);
+    //     }
+    // }
+    // ....
+    // int current = -q.top();
+    // ....
+    // q.push(-neighbor);
+
 void kahnTopologicalSort(int vertices) {
     queue<int> q;
 
