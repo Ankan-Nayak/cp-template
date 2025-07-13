@@ -18,6 +18,7 @@ void kahnTopologicalSort(int vertices) {
         q.pop();
 
         cout << current << " ";
+        // topo.pb(current);
 
         for (int neighbor : g[current]) {
             indegree[neighbor]--;
@@ -45,6 +46,10 @@ int main() {
 
     cout << "Topological Sorting Order: ";
     kahnTopologicalSort(n);
+
+    // if (topo.size() > n) {
+    //     // there is cycle
+    // }
 
     return 0;
 }
