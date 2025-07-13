@@ -40,6 +40,7 @@ int main() {
         cin >> l >> r;
         g[l].push_back(r);
         indegree[r]++;
+        // outdegree[l]++
     }
 
     cout << "Topological Sorting Order: ";
