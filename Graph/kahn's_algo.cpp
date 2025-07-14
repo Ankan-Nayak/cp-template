@@ -61,7 +61,7 @@ int main() {
     cout << "Topological Sorting Order: ";
     kahnTopologicalSort(n);
 
-    // if (topo.size() > n) {
+    // if (topo.size() < n) {
     //     // there is cycle
     // }
 
