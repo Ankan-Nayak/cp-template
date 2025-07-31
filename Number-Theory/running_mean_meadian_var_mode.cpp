@@ -103,6 +103,21 @@ int getModeResult() {
     return smallestVal;
 }
 
+double variance(int x) {
+    // Population variance:
+    // σ² = ∑(xi - μ)² / N
+    // => σ² = (∑x² / N) - μ²
+    // Where:
+    //   - ∑x² = sumsq
+    //   - ∑x  = sum
+    //   - μ = sum / N
+
+    double mean = 1.0 * sum / cnt;
+    double avg_sumsq = 1.0 * sumsq / cnt;
+    return avg_sumsq - mean * mean;
+}
+
+
 // Reset between test cases
 void reset() {
     sum = sumsq = cnt = 0;
