@@ -20,7 +20,7 @@ int dfs(int curr, int len) {
             visited[nxt] = 0;
         }
     }
-    visited[curr] = 0;
+    visited[curr] = 0; // all uncheck after full run
     return ans;
 }
 
