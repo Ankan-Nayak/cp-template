@@ -7,6 +7,14 @@
 // Total subsets = 2^N
 
 
+
+#include<bits/stdc++.h>
+using namespace std;
+
+#define int long long
+const int MOD=1e9+7;
+
+
 // Time: O(2^N)
 // Space: O(N) recursion stack
 long long cnt = 0;
@@ -47,6 +55,14 @@ long long brute_bitmask(vector<int>& arr, long long X) {
         if (sum <= X) cnt++;
     }
     return cnt;
+}
+
+
+signed main() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(0);cout.tie(0);
+
+    return 0;
 }
 
 
