@@ -1,3 +1,13 @@
+ 
+//    .
+//   . .
+//  .   .
+// .     .
+
+// if (a[mid] > a[mid + 1])
+// BS works for int values great
+// for floating use Ternary Search -> removes 1 / 3 every time, inferiror technique
+
 #include<bits/stdc++.h>
 using namespace std;
 
