@@ -3,7 +3,10 @@
 // Time complexity thinks like a to generate all possibility time 
 // (take, not take or no of subseq 2^n), all poss permutation(n!)
 
+// return , if base case already hit, that path won't be return
+// other path with no return will return back only
 
+// if only return 1, 0. Then no path will return, it will eventually hit something
 
 // f(int x) {
 //     set;
