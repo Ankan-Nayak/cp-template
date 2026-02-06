@@ -21,3 +21,5 @@ public:
         return ptr2;
 	}
 };
+
+// or use diff of length start from the max len - diff pos
