@@ -22,3 +22,6 @@ public:
         return false;
     }
 };
+
+// middle of linkedlist
+// loop exist
