@@ -25,3 +25,29 @@ ListNode* detectCycle(ListNode* head) {
         *        *
         *        *
         *  *  *  */
+
+
+// head →──── L ────→ cycle start →── x ──→ meeting point
+//                                ←── C ──→ (cycle)
+
+// L = length from head to the start of cycle
+// C = length of the cycle
+// x = distance from cycle start to the meeting point
+// slow moves 1 step at a time
+// fast moves 2 steps at a time
+
+// slow_distance = L + x + k1·C
+// fast_distance = L + x + k2·C = 2 × slow_distance
+
+
+// L + x + k₂·C = 2(L + x + k₁·C)
+// k₂·C − 2k₁·C = L + x
+// (k₂ − 2k₁) · C = L + x
+// L + x = k · C
+// L + x = k·C
+// ⇒ L = k·C − x
+// ⇒ L ≡ −x (mod C)
+// ⇒ L ≡ C − x (mod C)
+
+
+
