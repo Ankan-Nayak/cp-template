@@ -58,3 +58,5 @@ signed main() {
     return 0;
 }
 
+
+// // ≈ O(C(n*n, k))
