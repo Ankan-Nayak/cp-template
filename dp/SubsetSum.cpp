@@ -52,32 +52,81 @@ signed main() {
 
 // ITERATIVE -> space 0(sum)
 
-// #include<bits/stdc++.h>
-// using namespace std;
+#include<bits/stdc++.h>
+using namespace std;
  
-// const int inf=1e9;
+const int inf=1e9;
  
-// signed main() {
+signed main() {
  
-//     int n;
-//     cin >> n;
-//     vector<int> c(n);
-//     for (int j = 0; j < n; ++j) cin >> c[j];
-//     sort(c.begin(), c.end());
+    int n;
+    cin >> n;
+    vector<int> c(n);
+    for (int j = 0; j < n; ++j) cin >> c[j];
+    sort(c.begin(), c.end());
  
-//     vector<int> dp(1e5 + 10, 0);
-//     dp[0] = 1;
+    vector<int> dp(1e5 + 10, 0);
+    dp[0] = 1;
  
-//     for (int j = 0; j < n; ++j) {
-//         for (int i = 1e5; i >= 1; --i) {
-//             if (c[j] <= i) dp[i] = max(dp[i], dp[i - c[j]]);
-//         }
-//     }
+    for (int j = 0; j < n; ++j) {
+        for (int i = 1e5; i >= 1; --i) {
+            if (c[j] <= i) dp[i] = max(dp[i], dp[i - c[j]]);
+        }
+    }
  
-//     set<int> st;
-//     for (int i = 1; i <= 1e5; ++i) if (dp[i]) st.insert(i);
+    set<int> st;
+    for (int i = 1; i <= 1e5; ++i) if (dp[i]) st.insert(i);
  
-//     cout << st.size() << '\n';
-//     for (auto it : st) cout << it << ' ';
-//     return 0;
-// }
+    cout << st.size() << '\n';
+    for (auto it : st) cout << it << ' ';
+    return 0;
+}
+
+
+
+
+#include<bits/stdc++.h>
+using namespace std;
+
+signed main() {
+
+    int n;
+    cin >> n;
+    vector<int> c(n);
+
+    int totalSum = 0;
+    for (int j = 0; j < n; ++j) {
+        cin >> c[j];
+        totalSum += c[j];
+    }
+
+    sort(c.begin(), c.end());
+
+    // dp[index][total sum]
+    vector<vector<int>> dp(n+2, vector<int> (totalSum+2, 0));
+    dp[0][0] = 1; // best case possible
+
+    for (int j = 1; j <= n; ++j) {
+        for (int s = 1; s <= totalSum; ++s) {
+            dp[j][s] |= dp[j - 1][s]; // skip
+
+            // take
+            if (s >= c[j - 1]) {
+                dp[j][s] |= dp[j - 1][s - c[j - 1]];
+            }
+        }
+    }
+
+    vector<int> ans;
+    for (int s = 1; s <= totalSum; ++s) {
+        if (dp[n][s]) ans.push_back(s);
+    }
+
+    cout << ans.size() << '\n';
+    for (auto it : ans) cout << it << ' ';    
+    return 0;
+}
+
+
+
+
