@@ -21,3 +21,9 @@ int LIS(vector<int>& a) {
 // a = [10, 9, 2, 5, 3, 7, 101, 18]
 // LIS length = 4  (2, 3, 7, 101)
 // 0(NlogN)
+
+
+// | Requirement             | Binary Search         |
+// | ----------------------- | --------------------- |
+// | **Strictly Increasing** | `lower_bound` (≥ x) ✔ |
+// | **Non-Decreasing**      | `upper_bound` (> x) ✔ |
