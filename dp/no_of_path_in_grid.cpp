@@ -59,6 +59,9 @@ void solve()
             cin >> grid[i][j];
         }
     }
+
+    // use this, not memset
+    // this loops doesn't give TLE
     for (int i = 0; i <= n; i++)
     {
         for (int j = 0; j <= m; j++)
