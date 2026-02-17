@@ -88,3 +88,5 @@ signed main()
     }
 }
 
+// dp[i][j][k] = number of ways to reach (n,m) from (i,j)
+//               using atmax k conversions
