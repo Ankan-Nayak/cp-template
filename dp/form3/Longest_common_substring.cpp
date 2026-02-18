@@ -13,7 +13,7 @@ int rec(int i, int j) {
     if (ans != -1)return ans;
     ans = 0;
     if (s1[i] == s2[j])ans = max(ans, 1 + rec(i + 1, j + 1));
-    rec(i + 1, j), rec(i, j + 1);
+    // rec(i + 1, j), rec(i, j + 1); comment and uncomment both correct, beacuse it's not cntributing
     return ans;
 }
 void solve() {
