@@ -1,6 +1,7 @@
 /*
 ()() no relation -> form2 -> 
 ()() merger -> form4 -> size of main array is changing
+if we have to use bracket - - - (- - )(- -), probably LR dp
 generally o(n^3) sol form4*/
 
 
