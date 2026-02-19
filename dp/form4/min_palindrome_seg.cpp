@@ -1,3 +1,10 @@
+/*
+()() no relation -> form2
+()() merger -> form4
+generally o(n^3) sol form4*/
+
+
+// this is form2
 class Solution {
 public:
     int dp[2003][2003];
