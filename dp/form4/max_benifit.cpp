@@ -38,7 +38,7 @@ signed main() {
             for (int k = i; k < j; k++) {
                 dp[i][j] = max(dp[i][j],
                                dp[i][k] + dp[k+1][j]
-                               + getSum(i, k) * getSum(k+1, j));
+                               + (getSum(i, k)%100) * (getSum(k+1, j) %100)); // (getSum(i, k)%100) * (getSum(k+1, j) %100) % 100 this is wrong because extra % 100 changes contribution value, be aware
             }
         }
     }
