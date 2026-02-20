@@ -2,6 +2,8 @@
 _ _ _ _ _ _ 
 _ _ mid _ _ _ 
 which mid to split ans solve the problem
+
+subarrray, subseq
 */
 
 #include<bits/stdc++.h>
