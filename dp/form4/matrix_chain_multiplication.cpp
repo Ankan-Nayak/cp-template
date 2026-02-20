@@ -26,7 +26,7 @@ int rec(int l, int r) {
 	// compute
 	int ans = 1e9; // find min. cost
 	for(int mid=l; mid<r; mid++) {
-	    int bestmid = rec(l,mid) + rec(mid+1, r) + x[l]*y[mid]*y[r];
+	    int bestmid = rec(l,mid) + rec(mid+1, r) + x[l]*y[mid]*y[r]; // x[l]*y[mid]*y[r] = x[l]*x[mid+1]*y[r]
 	    if(bestmid<ans){
 	        ans = bestmid; // i know which mid gives me best answer
 	        back[l][r] = mid;
