@@ -81,3 +81,6 @@ int main() {
         }
     }
 }
+
+
+// input given 1x2, 2x3, 3x4..,that's why no need to check, two nearby matrix is always multiable
