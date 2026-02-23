@@ -50,3 +50,54 @@ signed main() {
 // 1 1 1 2 2 2 -> sum parity 1, len parity 0 -> +a[i] even (becomes valid) = odd len, odd sum
 
 // 0(n)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// all subarray with odd sum
+class Solution {
+public:
+    int numOfSubarrays(vector<int>& arr) {
+        int md = 1e9+7;
+        int ct[2][2] = {};
+        ct[0][0] = 1;
+        int ans = 0;
+        int sumParity = 0;
+        for (int i = 0; i < arr.size(); ++i) {
+            sumParity ^= (arr[i]&1);
+            int lenParity = ((i+1)&1);
+            ans += ct[1^sumParity][1^lenParity];
+            ans %= md;
+            ans += ct[1^sumParity][0^lenParity];
+            ans %= md;
+
+            ct[sumParity][lenParity] += 1;
+            ct[sumParity][lenParity] %= md;
+        }
+        return ans;
+    }
+};
+
+
+class Solution {
+    public int numOfSubarrays(int[] arr) {
+        long oddCount=0,prefixSum=0;
+        for(int a:arr){
+            prefixSum+=a;
+            oddCount+=prefixSum%2;
+        }
+        // only odd sum, all oddsum with ref to even sum
+        oddCount+=(arr.length-oddCount)*oddCount;
+        return (int)(oddCount%1_000_000_007);
+    }
+}
