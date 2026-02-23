@@ -1,3 +1,8 @@
+/*
+take, not take or
+_ _ _ _ _ _ _ _ _
+i    j    k     l*/
+
 #include<bits/stdc++.h>
 using namespace std;
 

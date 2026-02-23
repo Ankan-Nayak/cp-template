@@ -1,3 +1,13 @@
+/*
+_ _ _ _ _ _ _
+  i
+_ _ _ _ _ _ _
+        j
+
+seperate structure
+*/
+
+
 #include <bits/stdc++.h>
 using namespace std;
  
@@ -30,3 +40,4 @@ signed main() {
   cout << dp[n][m];
   
   return 0;
+}
