@@ -26,3 +26,7 @@ public:
 // (p1, s1), (p2, s2) => (p1 < p2) & (s1 > s2)
 // (p1 + s1 * t) = (p2 + s2 * t) 
 // time = (p1 - p2) / (s2 - s1);
+
+/*We can see that we can maintain candidate cars in this way using a stack, 
+removing cars with speed greater than or equal to current car, 
+and then removing cars which can never be first point of intersection. The first car after this process (if any) would be first point of intersection.*/
