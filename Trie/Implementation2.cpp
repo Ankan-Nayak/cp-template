@@ -154,3 +154,5 @@ int main() {
 
     return 0;
 }
+
+// if word was before, so that decide earse or not -> store "words" in <MAP> and check
