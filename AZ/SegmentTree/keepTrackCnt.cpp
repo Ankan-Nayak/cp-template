@@ -337,7 +337,7 @@ struct Node {
 vector<ll> arr;
 
 // 🔥 Merge function
-Node merge(Node a, Node b) {
+Node merge(Node a, Node b) { // actuall Node/object
     if (a.mn < b.mn) return a;
     if (b.mn < a.mn) return b;
     return Node(a.mn, a.cnt + b.cnt);
@@ -353,7 +353,7 @@ Node* build(int l, int r) {
     Node* right = build(mid+1, r);
 
     Node* cur = new Node();
-    Node res = merge(*left, *right);
+    Node res = merge(*left, *right); // sending actuall object/Node (*left)
     cur->mn = res.mn;
     cur->cnt = res.cnt;
     cur->left = left;
