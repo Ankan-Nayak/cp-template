@@ -52,6 +52,10 @@ int main() {
 	// vector<array<int, 3>> query;
 	// query.push_back({(int)ch, x, y});
 
+    // vector<tuple<char, int, int>> vec;
+    // vec.push_back({'a',1,2});
+    // auto [type, x, y] = vec[0];
+
 	vector<Query> query;
 	for (int i =0 ; i < q; ++i) {
 		char op; int x, y;
