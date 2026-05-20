@@ -5,6 +5,109 @@
 // 3 2 3 2 4 3 3 4 3 1
 // (2 3 2), (3 4 3 3 4 3), (1) ans = 3
 
+
+/*
+Palindrome Partitioning
+Recursive DP version
+--------------------------------
+
+State:
+dp(i) = minimum cuts needed
+for substring s[i...n-1]
+
+Transition:
+Try every possible palindrome starting from i
+
+Example:
+"aab"
+
+aa | b
+
+Answer = 1
+--------------------------------
+*/
+
+#include<bits/stdc++.h>
+using namespace std;
+
+class Solution {
+public:
+
+    string s;
+    int n;
+
+    int dp[2005];
+    int pal[2005][2005];
+
+
+
+    // check palindrome
+    int isPal(int l, int r) {
+
+        if(l >= r)
+            return 1;
+
+        if(pal[l][r] != -1)
+            return pal[l][r];
+
+        if(s[l] == s[r] && isPal(l+1,r-1))
+            return pal[l][r] = 1;
+
+        return pal[l][r] = 0;
+    }
+
+
+
+    /*
+    rec(i)
+
+    minimum cuts needed
+    for substring s[i...n-1]
+    */
+    int rec(int i) {
+
+        // no characters left
+        if(i == n)
+            return -1;
+
+        if(dp[i] != -1)
+            return dp[i];
+
+        int ans = 1e9;
+
+
+
+
+        // make palindrome from i...j
+        for(int j=i;j<n;j++) {
+
+            if(isPal(i,j)) {
+
+                ans = min(
+                    ans,
+                    1 + rec(j+1)
+                );
+            }
+        }
+
+        return dp[i] = ans;
+    }
+
+
+
+    int minCut(string str) {
+
+        s = str;
+        n = s.size();
+
+        memset(dp,-1,sizeof(dp));
+        memset(pal,-1,sizeof(pal));
+
+        return rec(0);
+    }
+};
+
+
 #include <bits/stdc++.h>
 using namespace std;
 
