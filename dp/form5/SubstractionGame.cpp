@@ -47,6 +47,8 @@ int rec(int x) {
     // compute
     int ans = 0;
     for (int m = 0; (1<<m) <= x; ++m) {
+        // any L rec(x-y), cur rec(x) win
+        // all W rec(x-y), cur rec(x) Lose
         if (rec(x - (1<<m)) == 0) {
             ans = 1;
             break;  // ← THIS is pruning
