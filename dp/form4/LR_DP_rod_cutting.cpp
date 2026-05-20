@@ -1,4 +1,15 @@
 /*
+form 4
+a subsegement LR is available to cut, find best way to cut, use that subproblem to solve the bigger
+dp(L,R,_) = best way to cut xL to XR
+which point should you cut at first, that matters = xp(optimal point) it costs (xL - xR)
+. . . xL. . . xp. . . xR. . . 
+dp(L,R) = best or min ((xR-xL) + dp(L,p) + dp(p,R))...loop over p. L<p<R, find the optimal p which returns min ans
+TC -> 0(n^3)
+*/
+
+
+/*
 _ _ _ _ _ _ 
 _ _ mid _ _ _ 
 which mid to split ans solve the problem
@@ -14,7 +25,7 @@ int x[100];
 int dp[100][100];
 
 int rec(int l, int r) {
-    if (l+1 == r) return 0;
+    if (l+1 == r) return 0; // min singlest poss unit 
     if (dp[l][r] != -1) return dp[l][r];
     int ans = 1e9;
     for (int p = l+1; p <= r-1; ++p) {
