@@ -116,3 +116,9 @@ int rec(int level) {
     }
     return dp[level] = ans;
 }
+
+int main() {
+    for (int i = 0; i < n; ++i) {
+        best = max(best, rec(i));
+    }
+}
