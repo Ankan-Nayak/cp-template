@@ -1,0 +1,100 @@
+// int rec(int level) { which level we are -> returns no of ways n, if we are at this level
+//     for (all choices) {
+//         default ans = doesn't effect if doesn't go inside func
+//         if (valid choice) {
+//             move(choice)
+//	       or, calculate min, max
+//		ans +=
+//		ans = max/min()
+//      ans |= , ans &= 
+//         }
+//     }
+// }
+
+// base case -> sure case -> return 1
+// if (level > n) we passed the bound
+// what we need to do -> check condition -> explore that(rec)
+// that rec would return some ans
+
+// Time Complexity -> all states multiply(max no val possibility) * inside dp complexity of loops
+
+
+
+
+// [], chocolate dimension (n,m) -> do k cuts
+// every parameter put in states -> k cuts(1,2,3,4..k-1,k)
+// [](n,y seg from m,x cuts) | (n,m - y seg from m,k-x cuts)
+
+// think of small problems how they will solve the bigger one
+// think after 2nd cut we get dp(p,q,r) -> we can get this cut like structure  
+// after nth cut or situation also
+
+// base case valid or Invalid general
+// 0, 1, inf, -inf
+
+
+
+// think also from iterative perspective -> for every i -> there are these many possible answers
+
+// form - 1
+// Level - current problem/position
+// choice - take or not take
+// check - can actually take ? <= k cond, <= x Time
+// move to the next level
+
+
+
+// form - 1
+int rec(int sum, int i) {
+    if (level == n) return 1;
+    // add cache check
+    int ans = rec(level + 1, time, item); // not take
+    if (time+t[level] <= x && item+1 <= k) {
+        ans = min(ans, s[level]+rec(level+1, time+t[level], item+1)); // take
+    }
+    // save and return
+    return dp[level][time][item];
+}
+
+
+// level 1 (taken---level)
+int rec(int sum, int i) {
+    if (i > n || sum > target) return 0;
+    
+    if (sum == target) return 1;
+    if (dp[sum][i] != -1) return dp[sum][i];
+    int ans = 0;
+    
+    ans |= rec(sum + a[i+1], i+1);
+    ans |= rec(sum, i+1);
+    return dp[sum][i] = ans;
+}
+
+
+Q. now if given multiple query of targets & (level - 1, or works there in same Time complexity)
+Q. path print
+
+// level - 1 (how much is left)
+// level, how much is left to make sum
+// rec(0, Target) -> dp(level, sum left) -> this version cache queries
+//
+
+// dp(level + 1, sumleft - a[level])
+// dp(level + 1, sumleft)
+
+// level 1
+// int rec(int level, int left) {
+//     if (left < 0) return 0;
+//     if (level == n + 1) {
+//         if (left == 0) return 1;
+//         else return 0;
+//     }
+//     if (dp[level][left] != -1) return dp[level][left];
+    
+//     int ans = 0;
+//     ans |= rec(level+1, left);
+//     ans |= rec(level+1, left-a[level]);
+    
+//     return dp[level][left] = ans;
+    
+// }
