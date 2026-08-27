@@ -98,3 +98,118 @@ Q. path print
 //     return dp[level][left] = ans;
     
 // }
+
+
+// path
+vector<int> res;
+
+int rec(int idx, int left) {
+    if (idx == n + 1) {
+        if (left == 0) {
+            for (auto x : res) {
+                cout << x << ' ';
+            }
+
+            cout << endl;
+            return 1;
+
+        }
+        return 0;
+    }
+    if (dp[idx][left] != -1) {
+        return dp[idx][left];
+    }
+    int ans = 0;
+
+    ans |= rec(idx + 1, left);
+    if (left - a[idx] >= 0) {
+        res.push_back(a[idx]);
+        if (rec(idx + 1, left - a[idx])) {
+            ans = 1;
+        } 
+        res.pop_back();
+    }
+    return dp[idx][left] = ans;
+
+}
+
+
+// path 2 - recommended
+void reconstruct(int idx, int left) {
+    if (idx == n + 1) return;
+
+    // If we can take a[idx], and it leads to a solution
+    if (left - a[idx] >= 0 &&
+        rec(idx + 1, left - a[idx])) {
+
+        res.push_back(a[idx]);
+        reconstruct(idx + 1, left - a[idx]);
+
+    } else {
+        // Otherwise don't take a[idx]
+        reconstruct(idx + 1, left);
+    }
+}
+
+
+// print all solution
+// or push in vector of vector
+void reconstruct(int idx, int left) {
+    if (idx == n + 1) {
+        for (auto x : ress) {
+            cout << x << ' ';
+        }
+        cout << endl;
+        return;
+    }
+
+    // If we can take a[idx], and it leads to a solution
+    if (rec(idx + 1, left)) {
+        reconstruct(idx+1, left);
+    }
+    if (rec(idx + 1, left - a[idx])) {
+        ress.push_back(a[idx]);
+        reconstruct(idx + 1, left - a[idx]);
+        ress.pop_back(); // backtrack
+    }
+}
+
+// keep a seperate boolean[][] array for path print
+// bool[][] helps, when dp[][] stores -ve values or inf, rather than 0,1
+// if calculated a stated bool[][] that will mark = 1, else 0
+
+// if -1 can be ans of dp, we can't use as default dp value, no memset
+// don't forget to reset()
+
+// in the base case before we reach level = n, we got left = 0, we got ans
+// even though we can prune it, but don't do it
+// everything can be reached -> the extra computation ans could be used for other
+// both fine tho
+
+// whoever gives right ans go to that state and do the transition & call again
+// if multiple (3 path -> 1,1,0) -> go any any one correct ans (1);
+
+// form
+// states
+// transition
+// time complexity or space
+// coding
+
+
+/*
+if you ever need a dp value
+always use/call rec(), 
+never use the dp array
+
+Reasons:
+1. By deafult it's -1, if we don't do != -1 cache, 
+it will use the -1 -> but it should be mean we didn't calculate ans for that dp[][])
+
+2. We don't assign the base case in dp ans array. we just return it
+Let's say if (i == n) return 1; but in reality dp[i] != 1, it filled with deafult 0 or -1 whatever
+
+3. if (rec(i + 1) == 1) true -> ans , we're not going to other possibilty
+if ans = A|B, if A = true, we also neeed to check B path even if A is true
+
+Above will give wrong ans on all path solutions
+*/
