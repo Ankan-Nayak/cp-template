@@ -82,3 +82,45 @@ signed main() {
 
     return 0;
 }
+
+
+
+
+#include <bits/stdc++.h>
+using namespace std;
+#define int long long
+
+signed main() {
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+
+    int tc;
+    cin >> tc;
+
+    while (tc--) {
+        int n, m;
+        cin >> n >> m;
+
+        vector<vector<int>> a(n, vector<int>(m));
+        vector<vector<int>> dp(n, vector<int>(m, 0));
+
+        for (int i = 0; i < n; i++)
+            for (int j = 0; j < m; j++)
+                cin >> a[i][j];
+
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < m; j++) {
+                int best = 0;
+                if (i > 0) {
+                    best = dp[i-1][j];
+                    if (j > 0) best = max(best, dp[i-1][j-1]);
+                    if (j + 1 < m) best = max(best, dp[i-1][j+1]);
+                }
+                dp[i][j] = max(best, a[i][j]);
+                cout << (a[i][j] > best ? 1 : 0) << ' ';
+            }
+            cout << '\n';
+        }
+    }
+    return 0;
+}
