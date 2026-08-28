@@ -213,3 +213,14 @@ if ans = A|B, if A = true, we also neeed to check B path even if A is true
 
 Above will give wrong ans on all path solutions
 */
+
+
+// think what rec(i,j,k) will return as answer
+
+/*
+Knapsack with consequtive K elements can be taken
+rec(level, sum, Consequtive) = 
+// take
+rec(level+1, sum+a[level], Consequtive+1) + p[i] 
+// don't take
+rec(level+1, sum, Consequtive = 0) */
