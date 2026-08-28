@@ -102,4 +102,13 @@ Therefore, if you kept:
 dp[2][5]
 
 from Test Case 1, you cannot use it for Test Case 2.
+
+
+
+
+but the answer actually depends on:
+
+idx
+left
+a[]
 */
