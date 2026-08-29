@@ -98,7 +98,7 @@ int main() {
     print(1,0);
 }
 
-
+// use (prev value's index) not (prev value), prev val range can be too big
 /*Form 2
 best ans ending at pos i
 dp(level, _) = best ans/ Longest Lis ending at i, starting from 1
