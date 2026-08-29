@@ -15,3 +15,27 @@
 
         cout << dp[n1][n2][n3] << '\n';
 */
+
+int dp[210][210][210];
+
+int rec(int i, int j, int k)
+{
+    if (i == n1 || j == n2 || k == n3)
+        return 0;
+
+    if (dp[i][j][k] != -1)
+        return dp[i][j][k];
+
+    int ans = 0;
+
+    if (s1[i] == s2[j] && s2[j] == s3[k])
+    {
+        ans = 1 + rec(i + 1, j + 1, k + 1);
+    }
+
+    ans = max(ans, rec(i + 1, j, k));
+    ans = max(ans, rec(i, j + 1, k));
+    ans = max(ans, rec(i, j, k + 1));
+
+    return dp[i][j][k] = ans;
+}
