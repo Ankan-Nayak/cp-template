@@ -224,3 +224,9 @@ rec(level, sum, Consequtive) =
 rec(level+1, sum+a[level], Consequtive+1) + p[i] 
 // don't take
 rec(level+1, sum, Consequtive = 0) */
+
+
+
+
+/*for default value use -1, 0, -inf, inf etc
+or create another done[][]dp to check wheather ans been calculated or not*/
