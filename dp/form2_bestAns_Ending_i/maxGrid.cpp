@@ -4,13 +4,14 @@ using namespace std;
 int n, m;
 int a[210][210];
 int dp[210][210];
+bool done[210][210];
 
 int rec(int i, int j)
 {
     if (i == 0 && j == 0)
         return a[0][0];
 
-    if (dp[i][j] != -1)
+    if (done[i][j])
         return dp[i][j];
 
     int ans = -1e9;
@@ -20,6 +21,8 @@ int rec(int i, int j)
 
     if (j > 0)
         ans = max(ans, rec(i, j - 1));
+
+    done[i][j] = true; // to check wheather dp has been calculated or not
 
     return dp[i][j] = a[i][j] + ans;
 }
@@ -52,7 +55,7 @@ void solve()
         for (int j = 0; j < m; j++)
             cin >> a[i][j];
 
-    memset(dp, -1, sizeof(dp));
+    memset(done, false, sizeof(done));
 
     cout << "Maximum answer = " << rec(n - 1, m - 1) << '\n';
 
