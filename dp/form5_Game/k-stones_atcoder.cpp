@@ -9,6 +9,7 @@ int rec(int x) {
     if (dp[x] != -1) return dp[x];
     int ans= 0;
     for (int j = 1; j <= n; ++j) {
+        // if after taking if other is losing for any possibility we win
         if (x - a[j] >= 0  &&  rec(x - a[j]) == 0)  {
             ans = 1;
             break;
