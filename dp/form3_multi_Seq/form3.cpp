@@ -2,7 +2,9 @@
 form 3
 multi seq dp
 multi array dp
-dp(i, j, _) = best ans in (i in array a) and (j in array b)*/
+dp(i, j, _) = best ans in (i in array a) and (j in array b)
+
+** generally asks for (best) ans*/
 
 /*
 LCS in a, b
