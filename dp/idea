@@ -230,3 +230,16 @@ rec(level+1, sum, Consequtive = 0) */
 
 /*for default value use -1, 0, -inf, inf etc
 or create another done[][]dp to check wheather ans been calculated or not*/
+
+
+
+
+/*How to reduce time complxity example
+
+-> can i find the needed info from any 1 params rather than using 2
+like len, rather than using l,r
+
+if in LR DP we didn't have array of position, we had only total len
+then it's useless to track starting point and ending point -> len does the same work*/
+
+/*always think how the small problem is solving the larger one thro memoziation*/
