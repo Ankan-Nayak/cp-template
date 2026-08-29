@@ -1,5 +1,7 @@
 /*
 dp(config) = W / L
+whoever comes to that pos, his fate is pre defined, calculate the predefine w/l
+now check who is coming to that pos
 
 
 (state) w-> A(move) -> L(opp lose)
