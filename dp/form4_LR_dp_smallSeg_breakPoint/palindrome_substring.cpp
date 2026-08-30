@@ -1,9 +1,13 @@
 // 11
-// 1 3 2 3 2 4 3 3 4 3 1
+// 1 2 3 2 4 3 3 4 3 1
 // (2 3 2), (1 4 3 3 4 3 1) ans = 2
 
 // 3 2 3 2 4 3 3 4 3 1
 // (2 3 2), (3 4 3 3 4 3), (1) ans = 3
+
+// [a {_ _ _ _ } a] [b _ _ b]
+// if {} this cost x, then [a {_ _ _ _ } a] also cost x, 
+// when deleting the last seg palindrome inside {} make it a{}a that's it
 
 
 /*
