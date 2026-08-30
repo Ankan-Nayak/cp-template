@@ -202,3 +202,84 @@ int main() {
 
     return 0;
 }
+
+
+/*
+
+merge element 2
+
+by mergeing 2 element(a,b) you get a single element (ax + by + z) % 50
+cost = a * b
+
+rec(l,r,x)
+
+
+*/
+
+
+#include <bits/stdc++.h>
+using namespace std;
+
+const int MAXN = 105;      // ⚠️ inferred — actual bound not visible; adjust to problem's N constraint
+int n;
+int a[MAXN];
+int X, Y, Z;                // merge formula constants — read from input
+int memo[MAXN][MAXN][50];
+bool done_[MAXN][MAXN];      // renamed from `done` to avoid clashing with std::done if any
+
+int dp(int l, int r, int xx) {
+    if (l == r) {
+        if (a[l] == xx) return 0;
+        else return 1e9;
+    }
+
+    if (done_[l][r]) {
+        return memo[l][r][xx];
+    }
+
+    for (int i = 0; i < 50; i++) memo[l][r][i] = 1e9;
+
+    for (int mid = l; mid < r; mid++) {
+        for (int fs = 0; fs < 50; fs++) {
+            for (int ls = 0; ls < 50; ls++) {
+                int merged = (fs * X + ls * Y + Z) % 50;
+                memo[l][r][merged] = min(
+                    memo[l][r][merged],
+                    dp(l, mid, fs) + dp(mid + 1, r, ls) + fs * ls
+                );
+            }
+        }
+    }
+
+    done_[l][r] = 1;
+    return memo[l][r][xx];
+}
+
+void solve() {
+    cin >> n;
+    for (int i = 0; i < n; i++) cin >> a[i];
+    cin >> X >> Y >> Z;
+
+    int target;              // ⚠️ inferred — assumes the task asks for a specific final value
+    cin >> target;
+
+    memset(done_, 0, sizeof(done_));
+    int ans = dp(0, n - 1, target);
+
+    if (ans >= (int)1e9) cout << -1 << "\n";
+    else cout << ans << "\n";
+}
+
+int main() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+
+    int t = 1;
+    // cin >> t;             // ⚠️ uncomment if multiple test cases
+    while (t--) solve();
+
+    return 0;
+}
+
+
+// dp(l, r, xx) = minimum cost to merge the subarray [l, r] down into a single value equal to xx.
