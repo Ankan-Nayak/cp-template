@@ -141,6 +141,17 @@ signed main() {
 
 
 
+// int rec(int l, int r) {
+//     if (l>=r) return 0;
+//     if (dp[l][r] != -1) return dp[l][r];
+//     int ans = 1e18;
+//     for (int m = l; m < r; ++m) {
+//         ans = min(ans, rec(l, m) + rec(m+1, r) + (getSum(l,m)%100) * (getSum(m+1,r)%100));
+//     }
+//     return dp[l][r] = ans;
+// }
+
+
 
 #include <bits/stdc++.h>
 using namespace std;
