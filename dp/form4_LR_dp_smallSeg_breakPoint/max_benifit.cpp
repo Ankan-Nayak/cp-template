@@ -136,3 +136,58 @@ signed main() {
 
     return 0;
 }
+
+
+
+
+
+
+#include <bits/stdc++.h>
+using namespace std;
+typedef long long ll;
+
+int n;
+ll a[505];
+ll pref[505];
+ll dp[505][505];
+
+ll getSum(int l, int r) {
+    return pref[r] - pref[l - 1];
+}
+
+ll normMod(ll x) {
+    // safe mod that always returns a value in [0, 99], even for negative x
+    return ((x % 100) + 100) % 100;
+}
+
+ll rec(int l, int r) {
+    if (l >= r) return 0;
+    if (dp[l][r] != -1) return dp[l][r];
+
+    ll ans = LLONG_MAX;
+    for (int m = l; m < r; ++m) {
+        ll left = rec(l, m);
+        ll right = rec(m + 1, r);
+        ll cost = normMod(getSum(l, m)) * normMod(getSum(m + 1, r));
+        ans = min(ans, left + right + cost);
+    }
+
+    return dp[l][r] = ans;
+}
+
+int main() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+
+    cin >> n;
+    for (int i = 1; i <= n; i++) {
+        cin >> a[i];
+        pref[i] = pref[i - 1] + a[i];
+    }
+
+    memset(dp, -1, sizeof(dp));
+
+    cout << rec(1, n) << "\n";
+
+    return 0;
+}
