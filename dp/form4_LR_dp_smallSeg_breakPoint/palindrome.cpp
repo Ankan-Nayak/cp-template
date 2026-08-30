@@ -3,46 +3,43 @@ using namespace std;
 
 int n;
 int a[505];
-int dp[505][505];
+int memo[505][505];
 
-int rec(int l, int r) {
+int solve(int l, int r) {
+    if (l > r) return 0;
+    if (l == r) return 1;
+    if (memo[l][r] != -1) return memo[l][r];
 
-    if (l > r)
-        return 0;
+    // Option 1: remove a[l] by itself
+    int res = solve(l + 1, r) + 1;
 
-    if (l == r)
-        return 1;
+    // Option 2: a[l] and a[l+1] are equal — remove them together (+1),
+    // then clear the rest
+    if (a[l] == a[l + 1]) {
+        res = min(res, solve(l + 2, r) + 1);
+    }
 
-    if (dp[l][r] != -1)
-        return dp[l][r];
-
-    // Delete a[l] separately
-    int ans = 1 + rec(l + 1, r);
-
-    // Try to connect a[l] with a[k]
-    for (int k = l + 1; k <= r; k++) {
-
-        if (a[l] == a[k]) {
-
-            ans = min(ans,
-                      rec(l + 1, k - 1)
-                    + rec(k, r));
+    // Option 3: a[l] matches some a[k], k >= l+2 — clear the middle,
+    // then a[l] and a[k] merge into that removal for free
+    for (int k = l + 2; k <= r; k++) {
+        if (a[k] == a[l]) {
+            res = min(res, solve(l + 1, k - 1) + solve(k + 1, r));
         }
     }
 
-    return dp[l][r] = ans;
+    return memo[l][r] = res;
 }
 
 int main() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
 
     cin >> n;
+    for (int i = 0; i < n; i++) cin >> a[i];
 
-    for (int i = 0; i < n; i++)
-        cin >> a[i];
+    memset(memo, -1, sizeof(memo));
 
-    memset(dp, -1, sizeof(dp));
-
-    cout << rec(0, n - 1) << '\n';
+    cout << solve(0, n - 1) << "\n";
 
     return 0;
 }
