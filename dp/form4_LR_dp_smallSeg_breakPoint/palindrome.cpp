@@ -1,3 +1,9 @@
+// Given a sequence of N numbers, in one operation you can remove any contiguous palindromic subsequence. After removal, the remaining elements join together.
+
+// Find the minimum number of operations needed to remove all elements.
+
+
+
 #include <bits/stdc++.h>
 using namespace std;
 
