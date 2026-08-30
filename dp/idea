@@ -243,3 +243,12 @@ if in LR DP we didn't have array of position, we had only total len
 then it's useless to track starting point and ending point -> len does the same work*/
 
 /*always think how the small problem is solving the larger one thro memoziation*/
+
+
+/*
+for infinite take not take
+s=0100 has to be there as subsequence
+rec(level, x) -> rec(level+1, x=4 means i got the s) or 
+if t[x] matches -> rec(level+1, x+1)
+if not matches rec(level+1, x)
+*/
