@@ -49,3 +49,24 @@ int main() {
 
     return 0;
 }
+
+
+function<int(int, int)> recur = [&](int L, int R) {
+        if (L > R) {
+            return 0ll;
+        }
+        if (L == R) {
+            return 1ll;
+        }
+        if (dp[L][R] != -1) {
+            return dp[L][R];
+        }
+        int ans = 1e18;
+        if (arr[L] == arr[R]) {
+            ans = max(1ll, recur(L + 1, R - 1));
+        }
+        for (int m = L; m < R; m++) {
+            ans = min(ans, recur(L, m) + recur(m + 1, R));
+        }
+        return dp[L][R] = ans;
+    };
