@@ -1,48 +1,48 @@
-/*
-problem statement -> min insertion needed to make the string s palindrome
-*/
-
 #include <bits/stdc++.h>
 using namespace std;
 
-#define int long long
-
 int n;
-string s;
-int dp[100][100];
-const int inf = 1e9;
-
-// if s[l]=s[r] -> rec(l+1,r-1)
-// if (s[l] != s[r]) -> 1 + min(rec(l,r-1), rec(l+1,r))
-// store min from all and return dp[l][r] = min(ans)
-// if (l >= r) return 0;
+int a[505];
+int dp[505][505];
 
 int rec(int l, int r) {
-    if (l >= r) {
+
+    if (l > r)
         return 0;
-    }
-    if (dp[l][r] != -1) {
+
+    if (l == r)
+        return 1;
+
+    if (dp[l][r] != -1)
         return dp[l][r];
+
+    // Delete a[l] separately
+    int ans = 1 + rec(l + 1, r);
+
+    // Try to connect a[l] with a[k]
+    for (int k = l + 1; k <= r; k++) {
+
+        if (a[l] == a[k]) {
+
+            ans = min(ans,
+                      rec(l + 1, k - 1)
+                    + rec(k, r));
+        }
     }
-    int ans = inf;
-    if (s[l] == s[r]) {
-        ans = min(ans, rec(l+1, r-1));
-    } 
-    ans = min(ans, 1 + min(rec(l+1,r), rec(l,r-1)));
+
     return dp[l][r] = ans;
 }
 
+int main() {
 
-signed main() {
+    cin >> n;
 
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr);
-
-    cin >> n >> s;
+    for (int i = 0; i < n; i++)
+        cin >> a[i];
 
     memset(dp, -1, sizeof(dp));
 
-    cout << rec(0, s.size()-1) << '\n';
+    cout << rec(0, n - 1) << '\n';
 
     return 0;
 }
