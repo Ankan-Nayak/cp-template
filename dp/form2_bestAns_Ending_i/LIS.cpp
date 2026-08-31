@@ -122,3 +122,71 @@ int main() {
         best = max(best, rec(i));
     }
 }
+
+
+
+
+
+/**************** */
+
+
+#include <bits/stdc++.h>
+using namespace std;
+
+int n;
+int arr[100005];
+pair<int,int> dp[100005]; // {length, count}
+
+pair<int,int> solveRec(int level){
+    if(dp[level].first != -1) return dp[level];
+
+    int bestLen = 1;
+    int cnt = 1;
+
+    for(int next = level+1; next < n; next++){
+        if(arr[next] > arr[level]){
+            pair<int,int> res = solveRec(next);
+            int len = res.first + 1;
+
+            if(len > bestLen){
+                bestLen = len;
+                cnt = res.second;          // new best -> reset count
+            } else if(len == bestLen){
+                cnt += res.second;         // tie -> add count
+            }
+        }
+    }
+
+    // save and return
+    return dp[level] = {bestLen, cnt};
+}
+
+void solve(){
+    cin >> n;
+    for(int i = 0; i < n; i++){
+        dp[i] = {-1, -1};
+        cin >> arr[i];
+    }
+
+    pair<int,int> ans = {1, 1};
+    for(int i = 0; i < n; i++){
+        pair<int,int> res = solveRec(i);
+        if(res.first > ans.first){
+            ans.first = res.first;
+            ans.second = res.second;
+        } else if(res.first == ans.first){
+            ans.second += res.second;
+        }
+    }
+
+    cout << ans.first << " " << ans.second << "\n";
+}
+
+int main(){
+    ios_base::sync_with_stdio(0);
+    cin.tie(0); cout.tie(0);
+
+    int t = 1;
+    // cin >> t;
+    while(t--) solve();
+}
