@@ -251,4 +251,28 @@ s=0100 has to be there as subsequence
 rec(level, x) -> rec(level+1, x=4 means i got the s) or 
 if t[x] matches -> rec(level+1, x+1)
 if not matches rec(level+1, x)
+
+
+automata theory
+*/
+
+
+
+/*
+knapsack atcoder E
+dp(level, wt <= w) = value(max)
+-> dp(level, value) = wt(min)
+*/
+
+
+/*
+OFFSET = 3 for (-3,3) range to make every value +ve
+
+rec() {
+    if (dp[x][y + OFFSET] != -1) {
+        return dp[x][y + OFFSET]
+    }
+
+    return dp[x][y + OFFSET] = ans
+}
 */
