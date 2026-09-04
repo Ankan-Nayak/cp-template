@@ -70,3 +70,31 @@ function<int(int, int)> recur = [&](int L, int R) {
         }
         return dp[L][R] = ans;
     };
+
+
+
+
+
+
+
+// subseq
+
+int dp[1005][1005];
+
+int solve(vector<int>& a, int l, int r) {
+    if (l > r) return 0;
+    if (l == r) return 1;
+    if (l + 1 == r) return (a[l] == a[r]) ? 1 : 2;   // <-- required special case
+
+    int &ans = dp[l][r];
+    if (ans != -1) return ans;
+
+    ans = 1 + solve(a, l + 1, r);          // remove a[l] alone
+
+    for (int i = l + 1; i <= r; i++) {
+        if (a[i] == a[l]) {
+            ans = min(ans, solve(a, l + 1, i - 1) + solve(a, i + 1, r));
+        }
+    }
+    return ans;
+}
