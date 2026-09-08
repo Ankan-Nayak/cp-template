@@ -1,3 +1,8 @@
+/*
+always dry run test cases
+if test fails new idea emarge
+don' start writing code, think, test throughly first*/
+
 // int rec(int level) { which level we are -> returns no of ways n, if we are at this level
 //     for (all choices) {
 //         default ans = doesn't effect if doesn't go inside func
