@@ -1,0 +1,54 @@
+class Solution {
+public:
+    string s;
+    // sz, tight, carry(0 or 1), num1, num2
+    long long dp[18][2][18][18];
+    long long rec(int i, int carry, int l, int r) {
+        if (i >= s.size()) {
+            return carry == 0;
+        }
+        if (dp[i][carry][l][r] != -1) {
+            return dp[i][carry][l][r];
+        }
+
+        int lim = s[i] - '0';
+
+        int s1 = ((i < l) ? 1 : 0);
+        int s2 = ((i < r) ? 1 : 0);
+
+        int e1 = ((i < l) ? 9 : 0);
+        int e2 = ((i < r) ? 9 : 0);
+
+
+        long long ans = 0;
+        for (int a = s1; a <= e1; ++a) {
+            for (int b = s2; b <= e2; ++b) {
+                int cur_sum = carry + a + b;
+                int decimal_num = cur_sum % 10;
+                int ucarry = cur_sum / 10;
+             
+                if (decimal_num == lim) {
+                    ans += rec(i+1, ucarry, l, r);
+                }
+            }
+        }
+        return dp[i][carry][l][r] = ans;
+    }
+
+    long long countNoZeroPairs(long long n) {
+        s = to_string(n);
+        reverse(s.begin(), s.end());
+
+        memset(dp, -1, sizeof(dp));
+
+        long long ans = 0;
+        // for length of num1 and num2
+        for (int l = 1; l <= s.size(); ++l) {
+            for (int r = 1; r <= s.size(); ++r) {
+                ans += rec(0, 0, l, r);
+            }
+        }
+
+        return ans;
+    }
+};
