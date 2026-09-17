@@ -1,4 +1,12 @@
 /*
+ * WRITE STUFFS DOWN
+ * DON'T GET STUCK ON ONE APPROACH
+ * 
+ * validate -> if doesn't make sense move ahead
+ */
+
+
+/*
 stack 
 NGE, NSE, PGE, PSE
 push index in stack i, use two stack to maintain
