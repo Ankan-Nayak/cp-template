@@ -32,6 +32,8 @@ sparse table ?
 
 /*
 sliding window maintaik window k?
+if cur sum > target left++ 
+if cur sum < target right++
 */
 
 /*
