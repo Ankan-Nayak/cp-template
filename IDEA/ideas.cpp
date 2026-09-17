@@ -23,6 +23,20 @@ sparse table ?
 */
 
 /*
+sliding window maintaik window k?
+*/
+
+/*
+Fix 1 parameter to check other
+*/
+
+/*
+bits format to reduce time
+
+modulo to reduce time  -> n%k = 3, k-3 to make 0
+*/
+
+/*
 how much current index is conyributing to ans
 */
 
