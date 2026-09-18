@@ -36,6 +36,7 @@ don' start writing code, think, test throughly first*/
 
 // base case valid or Invalid general
 // 0, 1, inf, -inf
+// if (i == n-1 && j == m-1) return cnt where dp[i][j][cnt], cnt as param
 
 
 
@@ -280,4 +281,10 @@ rec() {
 
     return dp[x][y + OFFSET] = ans
 }
+*/
+
+
+/*
+write all states manually 
+later decide
 */
