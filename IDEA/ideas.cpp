@@ -14,6 +14,11 @@ push index in stack i, use two stack to maintain
 */
 
 /*
+break problems into know related problems
+break down task into chunks
+*/
+
+/*
 Binary Search on Ans possible ?
 */
 
@@ -38,6 +43,12 @@ if cur sum < target right++
 
 /*
 Fix 1 parameter to check other
+
+for diff len = 1,2,3..n how ans react?
+*/
+
+/*
+for every l,r
 */
 
 /*
