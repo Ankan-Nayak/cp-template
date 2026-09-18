@@ -24,6 +24,7 @@ public:
 // but k is not needed as i + j = k
 /*
 so k can be removed from states
+as k can be derived from other params like i and j
 */
 
 class Solution {
