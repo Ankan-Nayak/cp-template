@@ -14,7 +14,7 @@ push index in stack i, use two stack to maintain
 */
 
 /*
-break problems into know related problems
+break problems into known related problems
 break down task into chunks
 */
 
