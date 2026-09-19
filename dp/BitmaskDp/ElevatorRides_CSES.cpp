@@ -39,3 +39,17 @@ signed main() {
  
     return 0;
 }
+
+
+
+/*
+.......... all pos
+..1... or 1.... or ...1 or ..1....  take only 1 element
+..1..1. or 1....1 or .1..1 or ..1....1..  take only 2 element
+1..1..1. or 1..1..1 or .1..11 or ..11....1..  take only 3 element
+.
+.
+.
+1111111111 take all element -> all possibility covered
+
+*/
