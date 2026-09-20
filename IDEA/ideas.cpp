@@ -42,6 +42,12 @@ if cur sum < target right++
 */
 
 /*
+sliding window with char stored in map for comparison
+
+char[26] = a,b,c..z
+*/
+
+/*
 Fix 1 parameter to check other
 
 for diff len = 1,2,3..n how ans react?
