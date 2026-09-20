@@ -45,6 +45,8 @@ if cur sum < target right++
 sliding window with char stored in map for comparison
 
 char[26] = a,b,c..z
+sliding window with map push new, remove old
+freq stored
 */
 
 /*
