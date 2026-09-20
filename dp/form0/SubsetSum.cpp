@@ -1,3 +1,16 @@
+vector<bool> dp(totalSum + 1, false);
+
+dp[0] = true;
+
+for (int x : nums) {
+    for (int sum = totalSum; sum >= x; sum--) {
+        if (dp[sum - x])
+            dp[sum] = true;
+    }
+}
+
+
+
 // RECURSIVE -> space 0(n * sum)
 
 #include<bits/stdc++.h>
