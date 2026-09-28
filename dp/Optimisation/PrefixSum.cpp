@@ -1,0 +1,3 @@
+/*
+in iterative u can use pref sum store use 
+later*/
