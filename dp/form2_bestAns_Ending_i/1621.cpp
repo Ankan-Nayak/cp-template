@@ -15,12 +15,19 @@ public:
         int ans = 0;
 
         if (state == 0) {
-            ans = (ans + rec(i+1, k, 1) % mod) % mod;
-            ans = (ans + rec(i+1, k, 0) % mod) % mod;
+            // Start segment at i
+            ans = (ans + rec(i + 1, k, 1)) % mod;
+ß
+            // Skip i
+            ans = (ans + rec(i + 1, k, 0)) % mod;
         }
+
         if (state == 1) {
-            ans = (ans + rec(i, k+1, 0) % mod) % mod;
-            ans = (ans + rec(i+1, k, 1) % mod) % mod;
+            // End segment at i
+            ans = (ans + rec(i, k + 1, 0)) % mod;
+
+            // Continue segment
+            ans = (ans + rec(i + 1, k, 1)) % mod;
         }
         return dp[i][k][state] = ans % mod;
     }
