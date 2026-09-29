@@ -23,6 +23,10 @@ then for all others taken in answer has to be unset at pos p
 */
 
 /*
+calc half ans, calc other half, use both together
+*/
+
+/*
 break problems into known related problems
 break down task into chunks
 */
