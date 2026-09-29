@@ -124,3 +124,10 @@ n = n >> 2;
 
 // for every pos unset >= set always from 0
 // ..0.. or ..1.. as 0 comes 1st always
+
+
+// what's the maximum possible sum of the subarray -> 30 bits max -> so 30
+// if ans is 20, then i can take 2^20 poss and check
+
+// if decided to take value x where bit set at position p
+// then for all others taken in answer has to be unset at pos p
