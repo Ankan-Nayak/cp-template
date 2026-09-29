@@ -68,6 +68,13 @@ bool oppositeSigns = (a ^ b) < 0;
 // 10. Clear the lowest set bit
 n = n & (n - 1);
 
+
+// Any lowest bit number is x =101100100
+// Then x-1 would be
+// =101100R11
+// Every bit after lowest bit would be set except that bit 
+// Like n&n-1
+
 // 11. Get the lowest set bit
 int lowestBit = n & (-n);
 
@@ -107,3 +114,13 @@ n = n << 2;
 
 // 22. Divide by 4 without /
 n = n >> 2;
+
+
+
+// store pos of bits in vector of vector 30 length
+// for every number 30 cols to store bit set/ unset
+
+
+
+// for every pos unset >= set always from 0
+// ..0.. or ..1.. as 0 comes 1st always
