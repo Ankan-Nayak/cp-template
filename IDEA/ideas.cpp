@@ -97,3 +97,10 @@ transition -> rec(i,j) to goes where
 
 base case what rec(i,j) would return to help in ans
 */
+
+
+/*
+cont ones 
+then pref sum
+remaining is zero or 0
+*/
