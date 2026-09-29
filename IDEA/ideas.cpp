@@ -14,6 +14,15 @@ push index in stack i, use two stack to maintain
 */
 
 /*
+what is the max ans possible 
+what's the maximum possible sum of the subarray -> 30 bits max -> so 30
+if ans is 20, then i can take 2^20 poss and check
+
+if decided to take value x where bit set at position p
+then for all others taken in answer has to be unset at pos p
+*/
+
+/*
 break problems into known related problems
 break down task into chunks
 */
