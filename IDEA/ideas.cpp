@@ -55,6 +55,14 @@ if cur sum < target right++
 */
 
 /*
+sliding window maintaik window k?
+ i = x, j = start, till j to i ans is storing
+ when to move j so that invalid to valid state again
+ i moves everytime
+ IMPORTANT CONCEPT
+*/
+
+/*
 sliding window with char stored in map for comparison
 
 char[26] = a,b,c..z
