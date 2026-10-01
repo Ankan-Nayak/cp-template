@@ -182,3 +182,8 @@ int main() {
 
     return 0;
 }
+
+/*
+can take node in map, vector, set, pq
+map<Node*, int> mp
+*/
