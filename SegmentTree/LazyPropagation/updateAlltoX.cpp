@@ -119,3 +119,6 @@ int main() {
 
     return 0;
 }
+
+
+// or use lazy[idx] = -1 for reset
