@@ -80,6 +80,12 @@ for diff len = 1,2,3..n how ans react?
 for every l,r
 */
 
+// sort based on end, where range[l,r] given
+
+// use sweep line technique
+
+// segment tree, lazy propagation, pass the array element itsef in vector, set, map
+
 /*
 bits format to reduce time
 
