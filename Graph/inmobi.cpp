@@ -87,3 +87,9 @@ Example:
     2
   Explanation: paths 1-2-5 and 4-3-6
   */
+
+  /*
+  startegy
+  
+  if a node has 2 child 1-2, 1-3, using 1 node patch node 2 and 3
+  but if a node has 4 child, 1-2,1-3,1-4,1-5, can patch 2,3 using node 1 but 4,5 became seperate, so child count - 1 add it up*/
