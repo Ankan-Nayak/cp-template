@@ -118,3 +118,5 @@ cont ones
 then pref sum
 remaining is zero or 0
 */
+
+// eliminate strategies one by one
