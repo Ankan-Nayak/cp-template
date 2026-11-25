@@ -165,3 +165,56 @@ int main() {
         else        { int u, v; cin >> u >> v; u--; v--; cout << h.queryPath(u, v) << "\n"; }
     }
 }
+
+/*
+=========================================================
+HLD (Heavy-Light Decomposition): picture of chains
+
+Legend:  ||  = heavy edge (same chain)
+         /,\ = light edge (a new chain starts below it)
+         [p] = position in the segment tree / base array
+         (s) = subtree size
+
+                      1 [0] (10)
+                     /  \
+               ||---/      \---\
+              2 [1] (6)       3 [7] (3)
+             /  \                ||
+          ||/    \             6 [8] (2)
+          4 [2]   5 [5] (2)      ||
+          (3)       ||         9 [9] (1)
+         /  \     10 [6] (1)
+      ||/    \
+     7 [3]   8 [4]
+     (1)     (1)
+
+Heavy child = child with the largest subtree size.
+(Tie at node 4: 7 and 8 both have size 1, so the first one, 7, is chosen.)
+
+CHAINS (head -> down):
+  Chain A: 1 -> 2 -> 4 -> 7     head = 1, positions 0,1,2,3
+  Chain B: 8                    head = 8, position  4
+  Chain C: 5 -> 10              head = 5, positions 5,6
+  Chain D: 3 -> 6 -> 9          head = 3, positions 7,8,9
+
+Each chain gets CONTIGUOUS positions, so one chain = one
+segment tree range. Positions come from a DFS that visits
+the heavy child FIRST.
+
+base array index:  0  1  2  3  4  5  6  7  8  9
+node at index:     1  2  4  7  8  5  10 3  6  9
+chain head:        1  1  1  1  8  5  5  3  3  3
+
+PATH QUERY EXAMPLE: path(9, 7)
+  u = 9, v = 7
+  head[9] = 3, head[7] = 1   (different chains)
+  step 1: depth[head[9]=3] > depth[head[7]=1] -> lift u
+          query range [pos[3], pos[9]] = [7, 9]
+          u = parent[3] = 1
+  step 2: head[1] = 1, head[7] = 1 (same chain)
+          query range [pos[1], pos[7]] = [0, 3]
+  Total: 2 segment tree range queries, combine the results.
+  Any path has at most O(log n) light edges, so O(log n) chains,
+  so O(log^2 n) per query.
+=========================================================
+*/
