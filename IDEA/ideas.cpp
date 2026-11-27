@@ -120,6 +120,8 @@ remaining is zero or 0
 */
 
 
+// rolling hash if string delete 1st insert at last and keep track -> 2 hash
+
 /*
 check constraints to reduce possibilities
 
