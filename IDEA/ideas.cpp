@@ -122,6 +122,5 @@ remaining is zero or 0
 
 /*
 check constraints to reduce possibilities
-*/
 
 // eliminate strategies one by one
